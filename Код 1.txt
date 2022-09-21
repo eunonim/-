@@ -1,0 +1,40 @@
+class Button // имя класса
+{
+    int x,y,w,h;
+    string color,text, pic;
+    COLORREF TX_color;
+public: // спецификатор доступа public
+    Button(int BX, int BY, int BW, int BH, string color ) // конструктор класса
+    {
+        x=BX;
+        y=BX;
+        w=BX;
+        h=BX;
+        TX_color=TX_BLUE;
+        txSetFillColour(TX_color);
+        txRectangle(x,y,x+w,y+h);
+    }
+
+    int BClick(int xClick,int yClick)
+    { if (xClick>x&&yClick>y&&xClick<x+w&&yClick<y+h)
+            return 1;
+            return 0;
+
+    }
+};
+  
+  txCreateWindow(800,600);
+
+  HDC Menu=txLoadImage("Menu.bmp");
+  
+  Button NewGame(30,30,150,100,TX_BLUE);
+
+  while()
+  {
+  txBitBlt(0,0,800,600,Menu);
+
+  
+  
+  }
+
+
