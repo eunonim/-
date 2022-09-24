@@ -1,40 +1,89 @@
+#include "iostream"
+#include "TXLib.h"
+
 class Button // имя класса
 {
     int x,y,w,h;
-    string color,text, pic;
+    string color,text="", pic;
     COLORREF TX_color;
 public: // спецификатор доступа public
     Button(int BX, int BY, int BW, int BH, string color ) // конструктор класса
     {
         x=BX;
-        y=BX;
-        w=BX;
-        h=BX;
+        y=BY;
+        w=BW;
+        h=BH;
         TX_color=TX_BLUE;
-        txSetFillColour(TX_color);
-        txRectangle(x,y,x+w,y+h);
+
     }
 
+    int textAdd(string txt)
+    {
+    text=txt;
+    }
+
+     int Draw()
+     {
+
+
+     txSetFillColour(TX_color);
+        txRectangle(x,y,x+w,y+h);
+
+
+    if (text!="")
+    {  txDrawText   (x, y, x+w, y+h, text.c_str() );
+        }
+
+    }
+
+
+
+
     int BClick(int xClick,int yClick)
-    { if (xClick>x&&yClick>y&&xClick<x+w&&yClick<y+h)
+    {
+      if (xClick>x&&yClick>y&&xClick<x+w&&yClick<y+h)
             return 1;
             return 0;
 
     }
 };
-  
+
+ main()
+ {
   txCreateWindow(800,600);
 
   HDC Menu=txLoadImage("Menu.bmp");
-  
-  Button NewGame(30,30,150,100,TX_BLUE);
-
-  while()
+  //кнопки (создание) начало
+  Button NewGame(30,30,130,70,"TX_BLUE");
+  Button Saves(30,110,130,70,"TX_BLUE");
+  Button Information(30,190,130,70,"TX_BLUE");
+  Button Settings(30,270,130,70,"TX_BLUE");
+  Button Leave(30,520,130,70,"TX_BLUE");
+  //кнопки (создание) конец
+  while(1)
   {
-  txBitBlt(0,0,800,600,Menu);
+  txClear();
+  txBegin();
 
-  
-  
+  txBitBlt(txDC(),0,0,800,600,Menu);
+  //кнопки (текст/рисовка) начало
+  NewGame.textAdd("New Game");
+  NewGame.Draw();
+
+  Saves.textAdd("Save Games");
+  Saves.Draw();
+
+  Information.textAdd("I");
+  Information.Draw();
+
+  Settings.textAdd("Settings");
+  Settings.Draw();
+
+  Leave.textAdd("Leave");
+  Leave.Draw();
+  //кнопки (текст/рисовка) конец
+  txEnd();
   }
+ }
 
 
