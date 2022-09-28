@@ -53,6 +53,7 @@ public: // спецификатор доступа public
   txCreateWindow(800,600);
 
   HDC Menu=txLoadImage("Menu.bmp");
+
   //кнопки (создание) начало
   Button NewGame(30,30,130,70,"TX_BLUE");
   Button Saves(30,110,130,70,"TX_BLUE");
@@ -60,12 +61,23 @@ public: // спецификатор доступа public
   Button Settings(30,270,130,70,"TX_BLUE");
   Button Leave(30,520,130,70,"TX_BLUE");
   //кнопки (создание) конец
+
+  //создание переменных начало
+  int sprite=1;
+  //создание переменных конец
+
   while(1)
   {
   txClear();
   txBegin();
 
+  if (sprite)
+  {
+  txSetColor(TX_WHITE);
+  txSelectFont("Arial",40,10);
+
   txBitBlt(txDC(),0,0,800,600,Menu);
+
   //кнопки (текст/рисовка) начало
   NewGame.textAdd("New Game");
   NewGame.Draw();
@@ -82,7 +94,21 @@ public: // спецификатор доступа public
   Leave.textAdd("Leave");
   Leave.Draw();
   //кнопки (текст/рисовка) конец
+
+  //Название города начало
+  txSetColor(TX_GREEN);
+  txSelectFont("Arial",60,30);
+  txTextOut(220,480,"Curved Skylines");
+  //Название города конец
+
+  //Версия игры начало
+  txSetColor(TX_GREEN);
+  txSelectFont("Arial",10,10);
+  txTextOut(700,590,"v Beta 1.0");
+  //Версия игры конец
+
   txEnd();
+  }
   }
  }
 
