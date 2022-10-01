@@ -56,6 +56,8 @@ public: // спецификатор доступа public
 
   //кнопки (создание) начало
   Button NewGame(30,30,130,70,"TX_BLUE");
+  NewGame.textAdd("New Game");
+
   Button Saves(30,110,130,70,"TX_BLUE");
   Button Information(30,190,130,70,"TX_BLUE");
   Button Settings(30,270,130,70,"TX_BLUE");
@@ -71,7 +73,7 @@ public: // спецификатор доступа public
   txClear();
   txBegin();
 
-  if (sprite)
+  if (sprite==1)
   {
   txSetColor(TX_WHITE);
   txSelectFont("Arial",40,10);
@@ -79,11 +81,12 @@ public: // спецификатор доступа public
   txBitBlt(txDC(),0,0,800,600,Menu);
 
   //кнопки (текст/рисовка) начало
-  NewGame.textAdd("New Game");
+
   NewGame.Draw();
 
   Saves.textAdd("Save Games");
   Saves.Draw();
+
 
   Information.textAdd("I");
   Information.Draw();
@@ -93,6 +96,7 @@ public: // спецификатор доступа public
 
   Leave.textAdd("Leave");
   Leave.Draw();
+  if (Leave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
   //кнопки (текст/рисовка) конец
 
   //Название города начало
@@ -107,8 +111,13 @@ public: // спецификатор доступа public
   txTextOut(700,590,"v Beta 1.0");
   //Версия игры конец
 
-  txEnd();
+
   }
+
+    if (sprite==2)
+  {  cout<<"end";
+  }
+  txEnd();
   }
  }
 
