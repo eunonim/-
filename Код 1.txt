@@ -53,15 +53,23 @@ public: // спецификатор доступа public
   txCreateWindow(800,600);
 
   HDC Menu=txLoadImage("Menu.bmp");
+  HDC InformationMenu=txLoadImage("Information.bmp");
 
   //кнопки (создание) начало
   Button NewGame(30,30,130,70,"TX_BLUE");
   NewGame.textAdd("New Game");
 
   Button Saves(30,110,130,70,"TX_BLUE");
+  Saves.textAdd("Save Games");
+
   Button Information(30,190,130,70,"TX_BLUE");
+  Information.textAdd("I");
+
   Button Settings(30,270,130,70,"TX_BLUE");
+  Settings.textAdd("Settings");
+
   Button Leave(30,520,130,70,"TX_BLUE");
+  Leave.textAdd("Leave");
   //кнопки (создание) конец
 
   //создание переменных начало
@@ -83,20 +91,19 @@ public: // спецификатор доступа public
   //кнопки (текст/рисовка) начало
 
   NewGame.Draw();
+  if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
 
-  Saves.textAdd("Save Games");
   Saves.Draw();
+  if (Saves.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=3;
 
-
-  Information.textAdd("I");
   Information.Draw();
+  if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
 
-  Settings.textAdd("Settings");
   Settings.Draw();
+  if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=5;
 
-  Leave.textAdd("Leave");
   Leave.Draw();
-  if (Leave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
+
   //кнопки (текст/рисовка) конец
 
   //Название города начало
@@ -117,8 +124,16 @@ public: // спецификатор доступа public
     if (sprite==2)
   {  cout<<"end";
   }
+
+
+   if (sprite==4)
+    {
+    txBitBlt(txDC(),0,0,800,600,InformationMenu);
+    if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
+    }
+
+
+
   txEnd();
   }
  }
-
-
