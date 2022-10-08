@@ -1,17 +1,20 @@
 #include "TXLib.h"
-class Button // имя класса
+class Button // ГЁГ¬Гї ГЄГ«Г Г±Г±Г 
 {
     int x,y,w,h;
     string color,text="", pic;
     COLORREF TX_color;
-public: // спецификатор доступа public
-    Button(int BX, int BY, int BW, int BH, string color ) // конструктор класса
+    int picterVisible=0;
+    int picterW, picterH;
+    HDC picter;
+public: // Г±ГЇГҐГ¶ГЁГґГЁГЄГ ГІГ®Г° Г¤Г®Г±ГІГіГЇГ  public
+    Button(int BX, int BY, int BW, int BH, COLORREF color ) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ«Г Г±Г±Г 
     {
         x=BX;
         y=BY;
         w=BW;
         h=BH;
-        TX_color=TX_BLUE;
+        TX_color=color;
 
     }
 
@@ -24,13 +27,24 @@ public: // спецификатор доступа public
      {
 
 
-     txSetFillColour(TX_color);
+        txSetFillColour(TX_color);
         txRectangle(x,y,x+w,y+h);
+
+   // РѕС‚РѕР±СЂР°Р¶Р°РµС‚ С„РѕРЅ РєРЅРѕРїРєРё
+  if (picterVisible)
+    {
+    
+    txBitBlt (txDC(), x, y, picterW,picterH, picter); }
+
+
 
 
     if (text!="")
     {  txDrawText   (x, y, x+w, y+h, text.c_str() );
         }
+
+
+
 
     }
 
@@ -41,4 +55,13 @@ int BClick(int xClick,int yClick)
             return 0;
 
     }
+ // РІРєР»СЋС‡Р°РµС‚ С„РѕРЅ РєРЅРѕРїРєРё
+ int PicterAdd(string Pic, int picW, int picH)
+ {
+    picter = txLoadImage (Pic.c_str());
+    picterVisible=1;
+    picterW=picW;
+    picterH=picH;
+
+ }
 };
