@@ -12,27 +12,41 @@
   HDC InformationMenu=txLoadImage("Information.bmp");
   HDC Field=txLoadImage("Field.bmp");
   HDC Nya=txLoadImage("Nya.bmp");
+  HDC Sun=txLoadImage("Sun.bmp");
+  HDC StopMenu=txLoadImage("StopMenu.bmp");
   //картинки конец
 
   //кнопки (создание) начало
-  Button NewGame(30,30,130,70,"TX_BLUE");
-  NewGame.textAdd("New Game");
 
-  Button Saves(30,110,130,70,"TX_BLUE");
-  Saves.textAdd("Save Games");
+   //спрайт 1 начало
+    Button NewGame(30,30,130,70,TX_BLUE);
+    NewGame.textAdd("New Game");
 
-  Button Information(30,190,130,70,"TX_BLUE");
-  Information.textAdd("I");
+    Button Saves(30,110,130,70,TX_BLUE);
+    Saves.textAdd("Save Games");
 
-  Button Settings(30,270,130,70,"TX_BLUE");
-  Settings.textAdd("Settings");
+    Button Information(30,190,130,70,TX_BLUE);
+    Information.textAdd("I");
 
-  Button Leave(30,520,130,70,"TX_RED");
-  Leave.textAdd("Leave");
+    Button Settings(30,270,130,70,TX_BLUE);
+    Settings.textAdd("Settings");
+
+    Button Leave(30,520,130,70,TX_RED);
+    Leave.textAdd("Leave");
+   //спрайт 1 конец
+
+   //спрайт 2 начало
+    Button Continue(260,10,280,70,TX_BLUE);
+    Continue.textAdd("Continue");
+
+
+   //спрайт 2 конец
+
   //кнопки (создание) конец
 
   //создание переменных начало
   int sprite=1;
+  int Win2_Visible=0;
   //создание переменных конец
 
   while(1)
@@ -84,6 +98,23 @@
     if (sprite==2)//игра
    {
     txBitBlt(txDC(),0,0,800,600,Field);
+    txTransparentBlt (700,0,Sun,TX_WHITE);
+
+    if (Win2_Visible)
+    { txTransparentBlt(250,0,StopMenu,TX_BLACK);
+      //кнопки (текст/рисовка) начало
+      Continue.Draw();
+      if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
+      //кнопки (текст/рисовка) конец
+    if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
+    txSleep(50);
+    }
+
+    if (!Win2_Visible)
+    {cout<<"t";
+    if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
+    txSleep(50);
+    }
    }
 
 
@@ -91,15 +122,20 @@
     {
      txBitBlt(txDC(),0,0,800,600,InformationMenu);
 
+
      if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
     }
 
    if (sprite==6)
    {
+   txSetFillColor(TX_WHITE);
 
    txBitBlt(txDC(),0,50,800,600,Nya);
 
    if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
+
+
+
    }
 
   txEnd();
