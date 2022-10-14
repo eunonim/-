@@ -8,12 +8,12 @@
   txCreateWindow(800,600);
 
   //картинки начало
-  HDC Menu=txLoadImage("Menu.bmp");
-  HDC InformationMenu=txLoadImage("Information.bmp");
-  HDC Field=txLoadImage("Field.bmp");
-  HDC Nya=txLoadImage("Nya.bmp");
-  HDC Sun=txLoadImage("Sun.bmp");
-  HDC StopMenu=txLoadImage("StopMenu.bmp");
+   HDC Menu=txLoadImage("Menu.bmp");
+   HDC InformationMenu=txLoadImage("Information.bmp");
+   HDC Field=txLoadImage("Field.bmp");
+   HDC Nya=txLoadImage("Nya.bmp");
+   HDC Sun=txLoadImage("Sun.bmp");
+   HDC StopMenu=txLoadImage("StopMenu.bmp");
   //картинки конец
 
   //кнопки (создание) начало
@@ -45,89 +45,91 @@
   //кнопки (создание) конец
 
   //создание переменных начало
-  int sprite=1;
-  int Win2_Visible=0;
+   int sprite=1;//спрайта нет в России (это китайский)
+   int Win2_Visible=0;//течение времени (0-время идет)
   //создание переменных конец
 
   while(1)
   {
-  txClear();
-  txBegin();
+   txClear();
+   txBegin();
 
-  if (sprite==1)
-  {
-  txSetColor(TX_WHITE);
-  txSelectFont("Arial",40,10);
+   if (sprite==1)
+    {//гл меню
+     txSetColor(TX_WHITE);
+     txSelectFont("Arial",40,10);
 
-  txBitBlt(txDC(),0,0,800,600,Menu);
+     txBitBlt(txDC(),0,0,800,600,Menu);
 
-  //кнопки (текст/рисовка) начало
+   //кнопки (текст/рисовка) начало
 
-  NewGame.Draw();
-  if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
+     NewGame.Draw();
+     if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
 
-  Saves.Draw();
-  if (Saves.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=3;
+     Saves.Draw();
+     if (Saves.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=3;
 
-  Information.Draw();
-  if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
+     Information.Draw();
+     if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
 
-  Settings.Draw();
-  if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=5;
+     Settings.Draw();
+     if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=5;
 
-  Leave.Draw();
-  if (Leave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
+     Leave.Draw();
+     if (Leave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
 
-  //кнопки (текст/рисовка) конец
+   //кнопки (текст/рисовка) конец
 
-  //Название города начало
-  txSetColor(TX_GREEN);
-  txSelectFont("Arial",60,30);
-  txTextOut(220,480,"Curved Skylines");
-  //Название города конец
+   //Название города начало
+    txSetColor(TX_GREEN);
+    txSelectFont("Arial",60,30);
+    txTextOut(220,480,"Curved Skylines");
+   //Название города конец
 
-  //Версия игры начало
-  txSetColor(TX_GREEN);
-  txSelectFont("Arial",10,10);
-  txTextOut(700,590,"v Beta 1.0");
-  //Версия игры конец
+   //Версия игры начало
+    txSetColor(TX_GREEN);
+    txSelectFont("Arial",10,10);
+    txTextOut(700,590,"v Beta 1.0");
+   //Версия игры конец
 
 
   }
 
-    if (sprite==2)//игра
-   {
-    txBitBlt(txDC(),0,0,800,600,Field);
-    txTransparentBlt (700,0,Sun,TX_WHITE);
+   if (sprite==2)
+    {//игра
+      txBitBlt(txDC(),0,0,800,600,Field);
+      txTransparentBlt (700,0,Sun,TX_WHITE);
 
-    if (Win2_Visible)
-    { txTransparentBlt(250,0,StopMenu,TX_BLACK);
+     if (Win2_Visible)// если время остановленно
+      { 
+        txTransparentBlt(250,0,StopMenu,TX_BLACK);
       //кнопки (текст/рисовка) начало
-      Continue.Draw();
-      if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
+       Continue.Draw();
+       if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
       //кнопки (текст/рисовка) конец
-    if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
-    txSleep(50);
-    }
+       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
+       txSleep(50);
+     }
 
-    if (!Win2_Visible)
-    {cout<<"t";
-    if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
-    txSleep(50);
-    }
+     if (!Win2_Visible)//если время не остановленно
+     {
+      cout<<"t";
+      if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
+      txSleep(50);
+     }
    }
 
 
-   if (sprite==4)//сведения
-    {
+  if (sprite==4)
+   {//сведения
      txBitBlt(txDC(),0,0,800,600,InformationMenu);
 
 
      if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
-    }
+   }
 
-   if (sprite==6)
-   {
+ if (sprite==6)
+  {//выход
    txSetFillColor(TX_WHITE);
 
    txBitBlt(txDC(),0,50,800,600,Nya);
@@ -136,8 +138,8 @@
 
 
 
-   }
+  }
 
   txEnd();
   }
- }
+ }//счастливый конец
