@@ -14,6 +14,7 @@
    HDC Nya=txLoadImage("Nya.bmp");
    HDC Sun=txLoadImage("Sun.bmp");
    HDC StopMenu=txLoadImage("StopMenu.bmp");
+   HDC Pause=txLoadImage("Pause.bmp");
   //картинки конец
 
   //кнопки (создание) начало
@@ -31,22 +32,28 @@
     Button Settings(30,270,130,70,TX_BLUE);
     Settings.textAdd("Settings");
 
-    Button Leave(30,520,130,70,TX_RED);
-    Leave.textAdd("Leave");
+    Button LeaveS1(30,520,130,70,TX_RED);
+    LeaveS1.textAdd("Leave");
    //спрайт 1 конец
 
    //спрайт 2 начало
-    Button Continue(260,10,280,70,TX_BLUE);
+    Button Continue(260,360,280,70,TX_BLUE);
     Continue.textAdd("Continue");
 
+    Button LeaveAndSave(260,440,280,70,TX_BLUE);
+    LeaveAndSave.textAdd("Leave And Save");
 
+    Button LeaveS2(260,520,280,70,TX_RED);
+    LeaveS2.textAdd("Leave to Main Menu");
    //спрайт 2 конец
 
   //кнопки (создание) конец
 
   //создание переменных начало
+
    int sprite=1;//спрайта нет в России (это китайский)
    int Win2_Visible=0;//течение времени (0-время идет)
+
   //создание переменных конец
 
   while(1)
@@ -75,8 +82,8 @@
      Settings.Draw();
      if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=5;
 
-     Leave.Draw();
-     if (Leave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
+     LeaveS1.Draw();
+     if (LeaveS1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
 
    //кнопки (текст/рисовка) конец
 
@@ -100,22 +107,33 @@
       txBitBlt(txDC(),0,0,800,600,Field);
       txTransparentBlt (700,0,Sun,TX_WHITE);
 
+      txSetColor(TX_WHITE);
+      txSelectFont("Arial",40,10);
+
      if (Win2_Visible)// если время остановленно
-      { 
+      {
         txTransparentBlt(250,0,StopMenu,TX_BLACK);
+        txTransparentBlt(260,20,Pause,TX_WHITE);
       //кнопки (текст/рисовка) начало
        Continue.Draw();
-       if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
+       if (Continue.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
+
+       LeaveAndSave.Draw();
+       if (LeaveAndSave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry.Function is development.");
+
+       LeaveS2.Draw();
+       if (LeaveS2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=1;
       //кнопки (текст/рисовка) конец
+
        if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
-       txSleep(50);
+       txSleep(65);
      }
 
      if (!Win2_Visible)//если время не остановленно
      {
       cout<<"t";
       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
-      txSleep(50);
+      txSleep(65);
      }
    }
 
