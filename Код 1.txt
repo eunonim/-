@@ -3,18 +3,18 @@
 #include "Button.h"
 
 
+
  int main()
  {
   txCreateWindow(800,600);
-
+  HDC Buildings=txCreateCompatibleDC (800,600);
   //картинки начало
-   HDC Menu=txLoadImage("Menu.bmp");
-   HDC InformationMenu=txLoadImage("Information.bmp");
-   HDC Field=txLoadImage("Field.bmp");
-   HDC Nya=txLoadImage("Nya.bmp");
-   HDC Sun=txLoadImage("Sun.bmp");
-   HDC StopMenu=txLoadImage("StopMenu.bmp");
-   HDC Pause=txLoadImage("Pause.bmp");
+   HDC Menu=txLoadImage("Texture/Menu.bmp");
+   HDC InformationMenu=txLoadImage("Texture/Information.bmp");
+   HDC Field=txLoadImage("Texture/Field.bmp");
+   HDC Nya=txLoadImage("Texture/Nya.bmp");
+   HDC Sun=txLoadImage("Texture/Sun.bmp");
+   HDC Building1=txLoadImage("Texture/Doma1.bmp");
   //картинки конец
 
   //кнопки (создание) начало
@@ -107,13 +107,14 @@
       txBitBlt(txDC(),0,0,800,600,Field);
       txTransparentBlt (700,0,Sun,TX_WHITE);
 
-      txSetColor(TX_WHITE);
-      txSelectFont("Arial",40,10);
-
      if (Win2_Visible)// если время остановленно
       {
-        txTransparentBlt(250,0,StopMenu,TX_BLACK);
-        txTransparentBlt(260,20,Pause,TX_WHITE);
+        txSetColor(TX_BLUE);
+        txSelectFont("Arial",40,10);
+
+        txDrawText (310,300,500,330,"Curved Skylines");
+
+        txSetColor(TX_WHITE);
       //кнопки (текст/рисовка) начало
        Continue.Draw();
        if (Continue.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
@@ -131,7 +132,16 @@
 
      if (!Win2_Visible)//если время не остановленно
      {
-      cout<<"t";
+      if (txMouseButtons())
+       {
+       txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
+       }
+
+
+
+
+
+
       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
       txSleep(65);
      }
