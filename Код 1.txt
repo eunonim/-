@@ -14,6 +14,7 @@
    HDC Field=txLoadImage("Texture/Field.bmp");
    HDC Nya=txLoadImage("Texture/Nya.bmp");
    HDC Sun=txLoadImage("Texture/Sun.bmp");
+   HDC Delete=txLoadImage("Texture/Delete.bmp");
    HDC Building1=txLoadImage("Texture/Doma1.bmp");
   //картинки конец
 
@@ -132,12 +133,22 @@
 
      if (!Win2_Visible)//если время не остановленно
      {
-      if (txMouseButtons())
+      if (txMouseButtons()==1)
        {
-       txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
+         //cout<<txMouseX()<<"  "<<txMouseY()  <<std::endl;
+         txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
        }
 
+       if (txMouseButtons()==2)
+       {
+        txSetColor(TX_BLACK);
+        txSetFillColor(TX_BLACK);
 
+        txBitBlt(Buildings,txMouseX(),txMouseY(),40,55,Delete);
+        txRectangle(txMouseX(),txMouseY(),txMouseX()+40,txMouseY()+55);
+       }
+
+        txTransparentBlt(txDC(),0,0,800,600,Buildings,0,0,TX_BLACK);
 
 
 
