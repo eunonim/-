@@ -15,7 +15,10 @@
    HDC Nya=txLoadImage("Texture/Nya.bmp");
    HDC Sun=txLoadImage("Texture/Sun.bmp");
    HDC Delete=txLoadImage("Texture/Delete.bmp");
-   HDC Building1=txLoadImage("Texture/Doma1.bmp");
+   HDC Building1=txLoadImage("Texture/Building1.bmp");
+   HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
+   HDC MenuBut=txLoadImage("Texture/MenuBut.bmp");
+   HDC TownName=txLoadImage("Texture/TownName.bmp");
   //картинки конец
 
   //кнопки (создание) начало
@@ -107,9 +110,12 @@
     {//игра
       txBitBlt(txDC(),0,0,800,600,Field);
       txTransparentBlt (700,0,Sun,TX_WHITE);
+      txTransparentBlt (0,0,OMB,TX_WHITE);
 
      if (Win2_Visible)// если время остановленно
       {
+        txTransparentBlt(txDC(),0,0,800,600,Buildings,0,0,TX_BLACK);
+
         txSetColor(TX_BLUE);
         txSelectFont("Arial",40,10);
 
@@ -134,9 +140,10 @@
      if (!Win2_Visible)//если время не остановленно
      {
       if (txMouseButtons()==1)
-       {
-         //cout<<txMouseX()<<"  "<<txMouseY()  <<std::endl;
+       { if (txMouseY()<1.2*txMouseX()+50)
+         {cout<<2*txMouseX()+81<<"  "<<txMouseY()  <<std::endl;
          txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
+         }
        }
 
        if (txMouseButtons()==2)
