@@ -60,7 +60,8 @@
    int Win2_Visible=0;//течение времени (0-время идет)
    int Zapret=0;//Запрещает строить на кнопках Строй.меню
    int PokazMenu=0;//Показывает/убирает меню
-
+   int CoorPaintBuildingsW=800;
+   int CoorPaintBuildingsH=600;
   //создание переменных конец
 
   while(1)
@@ -146,6 +147,9 @@
        {
        if(PokazMenu==0)
         {
+         CoorPaintBuildingsW=800;
+         CoorPaintBuildingsH=600;
+
         if (txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50)
          {
          txTransparentBlt(BuildMenu,0,450,800,150,MenuBut,0,0,TX_WHITE);
@@ -173,12 +177,17 @@
         {
         txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
 
+        CoorPaintBuildingsH=450;
+
         if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50)
          {
 
          PokazMenu=0;
          txSleep(100);
          }
+
+         if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>450&&txMouseX()<800&&txMouseX()<600)
+          Zapret=1;
         }
 
        if (txMouseButtons()==2)
@@ -190,7 +199,7 @@
         txRectangle(txMouseX(),txMouseY(),txMouseX()+40,txMouseY()+55);
        }
 
-        txTransparentBlt(txDC(),0,0,800,600,Buildings,0,0,TX_BLACK);
+        txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
 
 
 
