@@ -16,7 +16,14 @@
    HDC Nya=txLoadImage("Texture/Nya.bmp");
    HDC Sun=txLoadImage("Texture/Sun.bmp");
    HDC Delete=txLoadImage("Texture/Delete.bmp");
+
    HDC Building1=txLoadImage("Texture/Building1.bmp");
+   HDC Building2=txLoadImage("Texture/Building2.bmp");
+   HDC Building3=txLoadImage("Texture/Building3.bmp");
+   HDC Building4=txLoadImage("Texture/Building4.bmp");
+   HDC Building5=txLoadImage("Texture/Building5.bmp");
+   HDC Building6=txLoadImage("Texture/Building6.bmp");
+
    HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
    HDC MenuBut=txLoadImage("Texture/MenuBut.bmp");
    HDC TownName=txLoadImage("Texture/TownName.bmp");
@@ -42,14 +49,21 @@
    //спрайт 1 конец
 
    //спрайт 2 начало
-    Button Continue(260,360,280,70,TX_BLUE);
-    Continue.textAdd("Continue");
+    //кнопки стоп меню начало
+     Button Continue(260,360,280,70,TX_BLUE);
+     Continue.textAdd("Continue");
 
-    Button LeaveAndSave(260,440,280,70,TX_BLUE);
-    LeaveAndSave.textAdd("Leave And Save");
+     Button LeaveAndSave(260,440,280,70,TX_BLUE);
+     LeaveAndSave.textAdd("Leave And Save");
 
-    Button LeaveS2(260,520,280,70,TX_RED);
-    LeaveS2.textAdd("Leave to Main Menu");
+     Button LeaveS2(260,520,280,70,TX_RED);
+     LeaveS2.textAdd("Leave to Main Menu");
+    //кнопки стоп меню конец
+
+    //кнопки строй меню начало
+     Button BD1_1(55,500,50,86,TX_BLACK);
+     BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
+    //кнопки строй меню конец
    //спрайт 2 конец
 
   //кнопки (создание) конец
@@ -176,6 +190,8 @@
         if(PokazMenu==1)
         {
         txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
+
+        BD1_1.Draw();
 
         CoorPaintBuildingsH=450;
 
