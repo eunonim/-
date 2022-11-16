@@ -61,7 +61,7 @@
     //кнопки стоп меню конец
 
     //кнопки строй меню начало
-     Button BD1_1(55,500,50,86,TX_BLACK);
+     Button BD1_1(55,500,50,86,TX_TRANSPARENT);
      BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
     //кнопки строй меню конец
    //спрайт 2 конец
@@ -77,12 +77,13 @@
    int CoorPaintBuildingsW=800;
    int CoorPaintBuildingsH=600;
   //создание переменных конец
+  int m=0;
 
   while(1)
   {
    txClear();
    txBegin();
-
+   //if (txMouseButtons()==1) {cout<<" col="<<txGetPixel(txMouseX(),txMouseY())<<" "  ;}
    if (sprite==1)
     {//гл меню
      txSetColor(TX_WHITE);
@@ -157,14 +158,19 @@
 
      if (!Win2_Visible)//если время не остановленно
      {
-      if (txMouseButtons()==1)
-       {
+
+
+      if (GetAsyncKeyState(VK_M)) { m=1;  cout<<"jfdjjfjjfjhfjfjf";};
+
+      if (txMouseButtons()==1||m)
+
+      {
        if(PokazMenu==0)
         {
          CoorPaintBuildingsW=800;
          CoorPaintBuildingsH=600;
 
-        if (txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50)
+        if ((txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50 )|| m)
          {
          txTransparentBlt(BuildMenu,0,450,800,150,MenuBut,0,0,TX_WHITE);
          Zapret=1;
@@ -181,12 +187,13 @@
 
         if (txMouseY()<1.2*txMouseX()+50&&Zapret==0)
          {
-          cout<<2*txMouseX()+81<<"  "<<txMouseY()  <<std::endl;
+         // cout<<2*txMouseX()+81<<"  "<<txMouseY()  <<std::endl;
           txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
          }
          Zapret=0;
 
        }
+
         if(PokazMenu==1)
         {
         txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
@@ -195,10 +202,11 @@
 
         CoorPaintBuildingsH=450;
 
-        if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50)
+        if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50 || GetAsyncKeyState('m'))
          {
 
          PokazMenu=0;
+         m=0;
          txSleep(100);
          }
 
