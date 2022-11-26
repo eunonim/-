@@ -16,7 +16,7 @@
    HDC Nya=txLoadImage("Texture/Nya.bmp");
    HDC Sun=txLoadImage("Texture/Sun.bmp");
    HDC Delete=txLoadImage("Texture/Delete.bmp");
-
+   HDC Building;
    HDC Building1=txLoadImage("Texture/Building1.bmp");
    HDC Building2=txLoadImage("Texture/Building2.bmp");
    HDC Building3=txLoadImage("Texture/Building3.bmp");
@@ -36,7 +36,7 @@
     NewGame.textAdd("New Game");
 
     Button Saves(30,110,130,70,TX_BLUE);
-    Saves.textAdd("Save Games");
+    Saves.textAdd("Load Games");
 
     Button Information(30,190,130,70,TX_BLUE);
     Information.textAdd("I");
@@ -63,6 +63,21 @@
     //кнопки строй меню начало
      Button BD1_1(55,500,50,86,TX_TRANSPARENT);
      BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
+
+     Button BD1_2(115,500,50,86,TX_TRANSPARENT);
+     BD1_2.PicterAdd("Texture/Building2.bmp",50,86);
+
+     Button BD1_3(175,500,50,86,TX_TRANSPARENT);
+     BD1_3.PicterAdd("Texture/Building3.bmp",50,86);
+
+     Button BD1_4(235,500,50,86,TX_TRANSPARENT);
+     BD1_4.PicterAdd("Texture/Building4.bmp",50,86);
+
+     Button BD1_5(295,500,50,86,TX_TRANSPARENT);
+     BD1_5.PicterAdd("Texture/Building5.bmp",50,86);
+
+     Button BD1_6(355,500,50,86,TX_TRANSPARENT);
+     BD1_6.PicterAdd("Texture/Building6.bmp",50,86);
     //кнопки строй меню конец
    //спрайт 2 конец
 
@@ -78,14 +93,23 @@
    int CoorPaintBuildingsH=600;
    int m=0;
    int m1=1;
+   int Category=1;
+   int BuildingNumber=1;
+   int BuildingW=50;
+   int BuildingH=86;
+   Building=Building1;
   //создание переменных конец
+
+
+
+
 
 
   while(1)
   {
    txClear();
    txBegin();
-   //if (txMouseButtons()==1) {cout<<" col="<<txGetPixel(txMouseX(),txMouseY())<<" "  ;}
+
    if (sprite==1)
     {//гл меню
      txSetColor(TX_WHITE);
@@ -170,7 +194,9 @@
        if (txMouseY()<1.2*txMouseX()+50&&txMouseY()>1.2*txMouseX()-470&&txMouseY()>-0.1*txMouseX()+50&&txMouseY()<-0.1*txMouseX()+500&&Zapret==0)
          {
          // cout<<2*txMouseX()+81<<"  "<<txMouseY()  <<std::endl;
-          txTransparentBlt(Buildings,txMouseX(),txMouseY(),50,86,Building1,0,0,TX_WHITE);
+         // ТУТ ЗАДА РАЗМЕРЫ 50 86 ЧЕРЕЗ ПЕРЕМЕННЫЕ
+
+          txTransparentBlt(Buildings,txMouseX(),txMouseY(),BuildingW,BuildingH,Building,0,0,TX_WHITE);
          }
       }
 
@@ -209,22 +235,95 @@
         if(PokazMenu==1)
         {
         txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
-
-        BD1_1.Draw();
-
         CoorPaintBuildingsH=450;
 
-        if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50||(m&&m1))
-         {
 
-         PokazMenu=0;
-         m=0;
-         txSleep(100);
-         }
+            if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50||(m&&m1))
+                     {
+
+                     PokazMenu=0;
+                     m=0;
+                     txSleep(100);
+                     }
+
+        switch (Category)
+          { case 1:
+
+            BD1_1.Draw();
+
+            BD1_2.Draw();
+
+            BD1_3.Draw();
+
+            BD1_4.Draw();
+
+            BD1_5.Draw();
+
+            BD1_6.Draw();
+
+            if (BD1_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building1;
+                break;}
+
+            if (BD1_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building2;
+                break;}
+
+            if (BD1_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building3;
+                break;}
+
+            if (BD1_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building4;
+                break;}
+
+            if (BD1_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building5;
+                break;}
+
+            if (BD1_6.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=86;
+                Building=Building6;
+                break;}
+
+
+            break;
+           }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
          if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>450&&txMouseX()<800&&txMouseX()<600)
           Zapret=1;
-        }
+
 
        if (txMouseButtons()==2)
        {
@@ -235,7 +334,7 @@
         txRectangle(txMouseX(),txMouseY(),txMouseX()+40,txMouseY()+55);
        }
 
-        txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
+
 
 
 
@@ -243,8 +342,14 @@
       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
       txSleep(65);
      }
+     txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
+   }
    }
 
+  if (sprite==3)
+  {
+  cout<<sprite;
+  }
 
   if (sprite==4)
    {//сведения
