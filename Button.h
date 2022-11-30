@@ -1,14 +1,15 @@
 #include "TXLib.h"
-class Button // èìÿ êëàññà
+class Button // ГЁГ¬Гї ГЄГ«Г Г±Г±Г 
 {
     int x,y,w,h;
     string color,text="", pic;
     COLORREF TX_color;
-    int picterVisible=0;
     int picterW, picterH;
     HDC picter;
-public: // ñïåöèôèêàòîð äîñòóïà public
-    Button(int BX, int BY, int BW, int BH, COLORREF color ) // êîíñòðóêòîð êëàññà
+public:// Г±ГЇГҐГ¶ГЁГґГЁГЄГ ГІГ®Г° Г¤Г®Г±ГІГіГЇГ  public
+    int picterVisible=0;
+
+    Button(int BX, int BY, int BW, int BH, COLORREF color ) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ«Г Г±Г±Г 
     {
         x=BX;
         y=BY;
@@ -30,10 +31,10 @@ public: // ñïåöèôèêàòîð äîñòóïà public
         txSetFillColour(TX_color);
         txRectangle(x,y,x+w,y+h);
 
-   // отображает фон кнопки
+   // РѕС‚РѕР±СЂР°Р¶Р°РµС‚ С„РѕРЅ РєРЅРѕРїРєРё
   if (picterVisible)
     {
-    
+
     txBitBlt (txDC(), x, y, picterW,picterH, picter); }
 
 
@@ -55,7 +56,7 @@ int BClick(int xClick,int yClick)
             return 0;
 
     }
- // включает фон кнопки
+ // РІРєР»СЋС‡Р°РµС‚ С„РѕРЅ РєРЅРѕРїРєРё
  int PicterAdd(string Pic, int picW, int picH)
  {
     picter = txLoadImage (Pic.c_str());
@@ -65,3 +66,4 @@ int BClick(int xClick,int yClick)
 
  }
 };
+
