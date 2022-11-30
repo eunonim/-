@@ -9,14 +9,19 @@
   txCreateWindow(800,600);
   HDC Buildings=txCreateCompatibleDC (800,600);
   HDC BuildMenu=txCreateCompatibleDC (800,600);
+
   //картинки начало
+
    HDC Menu=txLoadImage("Texture/Menu.bmp");
    HDC InformationMenu=txLoadImage("Texture/Information.bmp");
    HDC Field=txLoadImage("Texture/Field.bmp");
    HDC Nya=txLoadImage("Texture/Nya.bmp");
    HDC Sun=txLoadImage("Texture/Sun.bmp");
    HDC Delete=txLoadImage("Texture/Delete.bmp");
+
+
    HDC Building;
+
    HDC Building1=txLoadImage("Texture/Building1.bmp");
    HDC Building2=txLoadImage("Texture/Building2.bmp");
    HDC Building3=txLoadImage("Texture/Building3.bmp");
@@ -24,14 +29,17 @@
    HDC Building5=txLoadImage("Texture/Building5.bmp");
    HDC Building6=txLoadImage("Texture/Building6.bmp");
 
+
    HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
    HDC MenuBut=txLoadImage("Texture/MenuBut.bmp");
    HDC TownName=txLoadImage("Texture/TownName.bmp");
+
   //картинки конец
 
   //кнопки (создание) начало
 
    //спрайт 1 начало
+
     Button NewGame(30,30,130,70,TX_BLUE);
     NewGame.textAdd("New Game");
 
@@ -46,10 +54,13 @@
 
     Button LeaveS1(30,520,130,70,TX_RED);
     LeaveS1.textAdd("Leave");
+
    //спрайт 1 конец
 
    //спрайт 2 начало
+
     //кнопки стоп меню начало
+
      Button Continue(260,360,280,70,TX_BLUE);
      Continue.textAdd("Continue");
 
@@ -58,9 +69,41 @@
 
      Button LeaveS2(260,520,280,70,TX_RED);
      LeaveS2.textAdd("Leave to Main Menu");
+
     //кнопки стоп меню конец
 
     //кнопки строй меню начало
+
+     Button CategoryLive (12,462,29,17,TX_TRANSPARENT);
+     CategoryLive.picterVisible=0;
+
+     Button CategoryShops (45,462,29,17,TX_TRANSPARENT);
+     CategoryShops.picterVisible=0;
+
+     Button CategoryIndustry (77,462,29,17,TX_TRANSPARENT);
+     CategoryIndustry.picterVisible=0;
+
+     Button CategoryMed (109,462,29,17,TX_TRANSPARENT);
+     CategoryMed.picterVisible=0;
+
+     Button CategoryAntifire (141,462,29,17,TX_TRANSPARENT);
+     CategoryAntifire.picterVisible=0;
+
+     Button CategoryPolice (174,462,29,17,TX_TRANSPARENT);
+     CategoryPolice.picterVisible=0;
+
+     Button CategoryGoverment (206,462,29,17,TX_TRANSPARENT);
+     CategoryGoverment.picterVisible=0;
+
+     Button CategoryPark (239,462,29,17,TX_TRANSPARENT);
+     CategoryPark.picterVisible=0;
+
+     Button CategoryOther (272,462,29,17,TX_TRANSPARENT);
+     CategoryOther.picterVisible=0;
+
+
+
+
      Button BD1_1(55,500,50,86,TX_TRANSPARENT);
      BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
 
@@ -78,7 +121,9 @@
 
      Button BD1_6(355,500,50,86,TX_TRANSPARENT);
      BD1_6.PicterAdd("Texture/Building6.bmp",50,86);
+
     //кнопки строй меню конец
+
    //спрайт 2 конец
 
   //кнопки (создание) конец
@@ -98,6 +143,7 @@
    int BuildingW=50;
    int BuildingH=86;
    Building=Building1;
+
   //создание переменных конец
 
 
@@ -212,7 +258,7 @@
          CoorPaintBuildingsW=800;
          CoorPaintBuildingsH=600;
 
-        if ((txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50 )|| m)
+        if ((txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50 )|| m)
          {
          txTransparentBlt(BuildMenu,0,450,800,150,MenuBut,0,0,TX_WHITE);
          Zapret=1;
@@ -238,13 +284,46 @@
         CoorPaintBuildingsH=450;
 
 
-            if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseX()<50||(m&&m1))
+            if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50||(m&&m1))
                      {
 
                      PokazMenu=0;
                      m=0;
                      txSleep(100);
                      }
+
+
+        CategoryLive.Draw();
+        if (CategoryLive.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=1;
+
+        CategoryShops.Draw();
+        if (CategoryShops.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=2;
+
+        CategoryIndustry.Draw();
+        if (CategoryIndustry.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=3;
+
+        CategoryMed.Draw();
+        if (CategoryMed.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=4;
+
+        CategoryAntifire.Draw();
+        if (CategoryAntifire.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=5;
+
+        CategoryPolice.Draw();
+        if (CategoryPolice.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=6;
+
+        CategoryGoverment.Draw();
+        if (CategoryGoverment.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=7;
+
+        CategoryPark.Draw();
+        if (CategoryPark.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=8;
+
+        CategoryOther.Draw();
+        if (CategoryOther.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=9;
+
+
+
+
+
 
         switch (Category)
           { case 1:
@@ -338,11 +417,13 @@
 
 
 
+    }
+    txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
 
       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
       txSleep(65);
-     }
-     txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
+
+
    }
    }
 
