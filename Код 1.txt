@@ -28,6 +28,25 @@
    HDC Building4=txLoadImage("Texture/Building4.bmp");
    HDC Building5=txLoadImage("Texture/Building5.bmp");
    HDC Building6=txLoadImage("Texture/Building6.bmp");
+   HDC Building7=txLoadImage("Texture/Building7.bmp");
+
+
+   HDC Shop1=txLoadImage("Texture/Shop1.bmp");
+   HDC Shop2=txLoadImage("Texture/Shop2.bmp");
+   HDC Shop3=txLoadImage("Texture/Shop3.bmp");
+   HDC Shop4=txLoadImage("Texture/Shop4.bmp");
+
+
+   HDC Industry1=txLoadImage("Texture/Industry1.bmp");
+   HDC Industry2=txLoadImage("Texture/Industry2.bmp");
+   HDC Industry3=txLoadImage("Texture/Industry3.bmp");
+   HDC Industry4=txLoadImage("Texture/Industry4.bmp");
+   HDC Industry5=txLoadImage("Texture/Industry5.bmp");
+
+
+   HDC Hospital=txLoadImage("Texture/Hospital.bmp");
+   HDC PoliceStation=txLoadImage("Texture/PoliceStation.bmp");
+   HDC Goverment=txLoadImage("Texture/Goverment.bmp");
 
 
    HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
@@ -121,6 +140,53 @@
 
      Button BD1_6(355,500,50,86,TX_TRANSPARENT);
      BD1_6.PicterAdd("Texture/Building6.bmp",50,86);
+
+     Button BD1_7(415,500,50,27,TX_TRANSPARENT);
+     BD1_7.PicterAdd("Texture/Building7.bmp",50,27);
+
+
+
+
+     Button BD2_1(55,500,79,27,TX_TRANSPARENT);
+     BD2_1.PicterAdd("Texture/Shop1.bmp",79,27);
+
+     Button BD2_2(55,537,79,27,TX_TRANSPARENT);
+     BD2_2.PicterAdd("Texture/Shop2.bmp",79,27);
+
+     Button BD2_3(144,500,79,27,TX_TRANSPARENT);
+     BD2_3.PicterAdd("Texture/Shop3.bmp",79,27);
+
+     Button BD2_4(144,537,79,27,TX_TRANSPARENT);
+     BD2_4.PicterAdd("Texture/Shop4.bmp",79,27);
+
+
+     Button BD3_1(10,500,100,41,TX_TRANSPARENT);
+     BD3_1.PicterAdd("Texture/Industry1.bmp",100,41);
+
+     Button BD3_2(110,500,100,82,TX_TRANSPARENT);
+     BD3_2.PicterAdd("Texture/Industry2.bmp",100,41);
+
+     Button BD3_3(220,500,100,82,TX_TRANSPARENT);
+     BD3_3.PicterAdd("Texture/Industry3.bmp",100,41);
+
+     Button BD3_4(330,500,100,82,TX_TRANSPARENT);
+     BD3_4.PicterAdd("Texture/Industry4.bmp",100,41);
+
+     Button BD3_5(440,500,100,82,TX_TRANSPARENT);
+     BD3_5.PicterAdd("Texture/Industry5.bmp",100,41);
+
+
+
+     Button BD4_1(115,500,50,86,TX_TRANSPARENT);
+     BD4_1.PicterAdd("Texture/Hospital.bmp",50,86);
+
+
+     Button BD6_1(175,500,50,86,TX_TRANSPARENT);
+     BD6_1.PicterAdd("Texture/PoliceStation.bmp",50,86);
+
+
+     Button BD7_1(235,500,50,86,TX_TRANSPARENT);
+     BD7_1.PicterAdd("Texture/Goverment.bmp",50,86);
 
     //кнопки строй меню конец
 
@@ -340,6 +406,8 @@
 
             BD1_6.Draw();
 
+            BD1_7.Draw();
+
             if (BD1_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
             {   BuildingW=50;
                 BuildingH=86;
@@ -376,6 +444,95 @@
                 Building=Building6;
                 break;}
 
+            if (BD1_7.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=50;
+                BuildingH=27;
+                Building=Building7;
+                break;}
+
+
+            break;
+
+            case 2:
+
+            BD2_1.Draw();
+
+            BD2_2.Draw();
+
+            BD2_3.Draw();
+
+            BD2_4.Draw();
+
+
+            if (BD2_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=79;
+                BuildingH=27;
+                Building=Shop1;
+                break;}
+
+            if (BD2_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=79;
+                BuildingH=27;
+                Building=Shop2;
+                break;}
+
+            if (BD2_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=79;
+                BuildingH=27;
+                Building=Shop3;
+                break;}
+
+            if (BD2_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=79;
+                BuildingH=27;
+                Building=Shop4;
+                break;}
+
+            break;
+
+            case 3:
+
+            BD3_1.Draw();
+
+            BD3_2.Draw();
+
+            BD3_3.Draw();
+
+            BD3_4.Draw();
+
+            BD3_5.Draw();
+
+
+
+            if (BD3_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=200;
+                BuildingH=82;
+                Building=Industry1;
+                break;}
+
+            if (BD3_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=200;
+                BuildingH=82;
+                Building=Industry2;
+                break;}
+
+            if (BD3_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=200;
+                BuildingH=82;
+                Building=Industry3;
+                break;}
+
+            if (BD3_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=200;
+                BuildingH=82;
+                Building=Industry4;
+                break;}
+
+            if (BD3_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=200;
+                BuildingH=82;
+                Building=Industry5;
+                break;}
 
             break;
            }
