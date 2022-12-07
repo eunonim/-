@@ -8,6 +8,7 @@ class Button // ГЁГ¬Гї ГЄГ«Г Г±Г±Г 
     HDC picter;
 public:// Г±ГЇГҐГ¶ГЁГґГЁГЄГ ГІГ®Г° Г¤Г®Г±ГІГіГЇГ  public
     int picterVisible=0;
+    int Facets=1;
 
     Button(int BX, int BY, int BW, int BH, COLORREF color ) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ«Г Г±Г±Г 
     {
@@ -26,6 +27,12 @@ public:// Г±ГЇГҐГ¶ГЁГґГЁГЄГ ГІГ®Г° Г¤Г®Г±ГІГі�
 
      int Draw()
      {
+
+        if(!Facets)   txSetColour(TX_TRANSPARENT);
+
+
+
+
 
 
         txSetFillColour(TX_color);
@@ -66,4 +73,3 @@ int BClick(int xClick,int yClick)
 
  }
 };
-
