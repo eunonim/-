@@ -39,12 +39,10 @@
 
    HDC Industry1=txLoadImage("Texture/Industry1.bmp");
    HDC Industry2=txLoadImage("Texture/Industry2.bmp");
-   HDC Industry3=txLoadImage("Texture/Industry3.bmp");
-   HDC Industry4=txLoadImage("Texture/Industry4.bmp");
-   HDC Industry5=txLoadImage("Texture/Industry5.bmp");
 
 
    HDC Hospital=txLoadImage("Texture/Hospital.bmp");
+   HDC MCHS=txLoadImage("Texture/MCHS.bmp");
    HDC PoliceStation=txLoadImage("Texture/PoliceStation.bmp");
    HDC Goverment=txLoadImage("Texture/Goverment.bmp");
 
@@ -54,6 +52,7 @@
    HDC TownName=txLoadImage("Texture/TownName.bmp");
 
   //картинки конец
+
 
   //кнопки (создание) начало
 
@@ -95,30 +94,39 @@
 
      Button CategoryLive (12,462,29,17,TX_TRANSPARENT);
      CategoryLive.picterVisible=0;
+     CategoryLive.Facets=0;
 
      Button CategoryShops (45,462,29,17,TX_TRANSPARENT);
      CategoryShops.picterVisible=0;
+     CategoryShops.Facets=0;
 
      Button CategoryIndustry (77,462,29,17,TX_TRANSPARENT);
      CategoryIndustry.picterVisible=0;
+     CategoryIndustry.Facets=0;
 
      Button CategoryMed (109,462,29,17,TX_TRANSPARENT);
      CategoryMed.picterVisible=0;
+     CategoryMed.Facets=0;
 
      Button CategoryAntifire (141,462,29,17,TX_TRANSPARENT);
      CategoryAntifire.picterVisible=0;
+     CategoryAntifire.Facets=0;
 
      Button CategoryPolice (174,462,29,17,TX_TRANSPARENT);
      CategoryPolice.picterVisible=0;
+     CategoryPolice.Facets=0;
 
      Button CategoryGoverment (206,462,29,17,TX_TRANSPARENT);
      CategoryGoverment.picterVisible=0;
+     CategoryGoverment.Facets=0;
 
      Button CategoryPark (239,462,29,17,TX_TRANSPARENT);
      CategoryPark.picterVisible=0;
+     CategoryPark.Facets=0;
 
      Button CategoryOther (272,462,29,17,TX_TRANSPARENT);
      CategoryOther.picterVisible=0;
+     CategoryOther.Facets=0;
 
 
 
@@ -160,33 +168,27 @@
      BD2_4.PicterAdd("Texture/Shop4.bmp",79,27);
 
 
-     Button BD3_1(10,500,100,41,TX_TRANSPARENT);
-     BD3_1.PicterAdd("Texture/Industry1.bmp",100,41);
+     Button BD3_1(10,500,200,82,TX_TRANSPARENT);
+     BD3_1.PicterAdd("Texture/Industry1.bmp",200,82);
 
-     Button BD3_2(110,500,100,82,TX_TRANSPARENT);
-     BD3_2.PicterAdd("Texture/Industry2.bmp",100,41);
-
-     Button BD3_3(220,500,100,82,TX_TRANSPARENT);
-     BD3_3.PicterAdd("Texture/Industry3.bmp",100,41);
-
-     Button BD3_4(330,500,100,82,TX_TRANSPARENT);
-     BD3_4.PicterAdd("Texture/Industry4.bmp",100,41);
-
-     Button BD3_5(440,500,100,82,TX_TRANSPARENT);
-     BD3_5.PicterAdd("Texture/Industry5.bmp",100,41);
+     Button BD3_2(220,500,200,82,TX_TRANSPARENT);
+     BD3_2.PicterAdd("Texture/Industry2.bmp",200,82);
 
 
-
-     Button BD4_1(115,500,50,86,TX_TRANSPARENT);
-     BD4_1.PicterAdd("Texture/Hospital.bmp",50,86);
-
-
-     Button BD6_1(175,500,50,86,TX_TRANSPARENT);
-     BD6_1.PicterAdd("Texture/PoliceStation.bmp",50,86);
+     Button BD4_1(10,500,92,86,TX_TRANSPARENT);
+     BD4_1.PicterAdd("Texture/Hospital.bmp",92,86);
 
 
-     Button BD7_1(235,500,50,86,TX_TRANSPARENT);
-     BD7_1.PicterAdd("Texture/Goverment.bmp",50,86);
+     Button BD5_1(10,500,92,55,TX_TRANSPARENT);
+     BD5_1.PicterAdd("Texture/MCHS.bmp",92,55);
+
+
+     Button BD6_1(10,500,92,86,TX_TRANSPARENT);
+     BD6_1.PicterAdd("Texture/PoliceStation.bmp",92,86);
+
+
+     Button BD7_1(10,500,100,27,TX_TRANSPARENT);
+     BD7_1.PicterAdd("Texture/Goverment.bmp",100,27);
 
     //кнопки строй меню конец
 
@@ -496,11 +498,6 @@
 
             BD3_2.Draw();
 
-            BD3_3.Draw();
-
-            BD3_4.Draw();
-
-            BD3_5.Draw();
 
 
 
@@ -516,28 +513,75 @@
                 Building=Industry2;
                 break;}
 
-            if (BD3_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=200;
-                BuildingH=82;
-                Building=Industry3;
+
+
+            break;
+
+
+           case 4:
+
+            BD4_1.Draw();
+
+
+
+
+            if (BD4_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=92;
+                BuildingH=86;
+                Building=Hospital;
                 break;}
 
-            if (BD3_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=200;
-                BuildingH=82;
-                Building=Industry4;
+
+            break;
+
+            case 5:
+
+            BD5_1.Draw();
+
+
+
+
+            if (BD5_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=92;
+                BuildingH=55;
+                Building=MCHS;
                 break;}
 
-            if (BD3_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=200;
-                BuildingH=82;
-                Building=Industry5;
+
+            break;
+
+            case 6:
+
+            BD6_1.Draw();
+
+
+
+
+            if (BD6_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=92;
+                BuildingH=86;
+                Building=PoliceStation;
                 break;}
+
+
+            break;
+
+            case 7:
+
+            BD7_1.Draw();
+
+
+
+
+            if (BD7_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {   BuildingW=100;
+                BuildingH=27;
+                Building=Goverment;
+                break;}
+
 
             break;
            }
-
-
 
 
 
@@ -561,14 +605,7 @@
           Zapret=1;
 
 
-       if (txMouseButtons()==2)
-       {
-        txSetColor(TX_BLACK);
-        txSetFillColor(TX_BLACK);
 
-        txBitBlt(Buildings,txMouseX(),txMouseY(),40,55,Delete);
-        txRectangle(txMouseX(),txMouseY(),txMouseX()+40,txMouseY()+55);
-       }
 
 
 
@@ -576,6 +613,15 @@
 
     }
     txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
+
+    if (txMouseButtons()==2)
+       {
+        txSetColor(TX_BLACK);
+        txSetFillColor(TX_BLACK);
+
+        txBitBlt(Buildings,txMouseX(),txMouseY(),40,55,Delete);
+        txRectangle(txMouseX(),txMouseY(),txMouseX()+40,txMouseY()+55);
+       }
 
       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=1;
       txSleep(65);
