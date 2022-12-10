@@ -1,7 +1,7 @@
 #include "iostream"
 #include "TXLib.h"
 #include "Button.h"
-
+#include "LOadSaveImage.h"
 
 
  int main()
@@ -9,6 +9,7 @@
   txCreateWindow(800,600);
   HDC Buildings=txCreateCompatibleDC (800,600);
   HDC BuildMenu=txCreateCompatibleDC (800,600);
+  HDC Load=txCreateCompatibleDC (800,600);
 
   //картинки начало
 
@@ -221,7 +222,7 @@
 
   while(1)
   {
-   txClear();
+   //txClear();
    txBegin();
 
    if (sprite==1)
@@ -243,7 +244,7 @@
      if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
 
      Settings.Draw();
-     if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=5;
+     if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry. Function is development.");
 
      LeaveS1.Draw();
      if (LeaveS1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
@@ -268,6 +269,7 @@
    if (sprite==2)
     {//игра
       txBitBlt(txDC(),0,0,800,600,Field);
+      //txTransparentBlt(txDC(),0,0,800,600,Load,0,0,TX_BLACK);
       txTransparentBlt (700,0,Sun,TX_WHITE);
       txTransparentBlt (0,0,OMB,TX_WHITE);
 
@@ -286,7 +288,7 @@
        if (Continue.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
 
        LeaveAndSave.Draw();
-       if (LeaveAndSave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry.Function is development.");
+       if (LeaveAndSave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry. Function is development.");
 
        LeaveS2.Draw();
        if (LeaveS2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=1;
@@ -628,11 +630,30 @@
 
 
    }
+
    }
 
   if (sprite==3)
   {
-  cout<<sprite;
+
+
+
+
+
+
+   LoadSaveImage f1;
+
+   f1.GetFileName(1);
+   f1.Load(Buildings) ;
+
+   sprite=2;
+
+
+
+
+
+
+  if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
   }
 
   if (sprite==4)
