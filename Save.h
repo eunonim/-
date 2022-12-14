@@ -1,3 +1,11 @@
+#include "TXLib.h"
+#include "Button.h"
+#include <iostream>
+#include "LoadSaveImage.h"
+#include <string>
+
+
+
 {
 
    txCreateWindow ( 800, 600);
