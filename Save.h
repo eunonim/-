@@ -5,20 +5,19 @@
 #include <string>
 
 
-
+int SaveFile(HDC dc )
 {
+const char* home;
+home= txInputBox ("ВВедите имя сохранения ");
+       char* b;
+       b=(char*)home;
+       strcat (b,".bmp");
+          txSaveImage (b, dc);
+}
 
-   txCreateWindow ( 800, 600);
-   HDC save = txCreateCompatibleDC (800, 600);
+struct SizePic
+{  int w,h;
+   string name[3]={"mini","","big"};
 
 
-   LoadSaveImage f1;
-
-   f1.GetFileName(1);
-   f1.Load(save) ;
-
-
-
-
-
-   }
+} ;
