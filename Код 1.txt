@@ -4,340 +4,441 @@
 #include "LOadSaveImage.h"
 
 
+
+
+
+
+
+
+
+
+
+
+        int SaveFile(HDC dc )
+         { //сохранение/save
+                const char* home;
+                home= txInputBox ("Name your file...");
+                       char* b;
+                       b=(char*)home;
+                       strcat (b,".bmp");
+                          txSaveImage (b, dc);
+         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  int main()
  {
+
   txCreateWindow(800,600);
-  HDC Buildings=txCreateCompatibleDC (800,600);
-  HDC BuildMenu=txCreateCompatibleDC (800,600);
-  HDC Load=txCreateCompatibleDC (800,600);
 
-  //картинки начало
+      HDC Buildings=txCreateCompatibleDC (800,600);
+      HDC BuildMenu=txCreateCompatibleDC (800,600);
+      HDC Load=txCreateCompatibleDC (800,600);
 
-   HDC Menu=txLoadImage("Texture/Menu.bmp");
-   HDC InformationMenu=txLoadImage("Texture/Information.bmp");
-   HDC Field=txLoadImage("Texture/Field.bmp");
-   HDC Nya=txLoadImage("Texture/Nya.bmp");
-   HDC Sun=txLoadImage("Texture/Sun.bmp");
-   HDC Delete=txLoadImage("Texture/Delete.bmp");
+  //картинки начало/pictures begin
 
+       HDC Menu=txLoadImage("Texture/Menu.bmp");
+       HDC InformationMenu=txLoadImage("Texture/Information.bmp");
+       HDC Field=txLoadImage("Texture/Field.bmp");
+       HDC Nya=txLoadImage("Texture/Nya.bmp");
+       HDC Sun=txLoadImage("Texture/Sun.bmp");
+       HDC Delete=txLoadImage("Texture/Delete.bmp");
 
-   HDC Building;
 
-   HDC Building1=txLoadImage("Texture/Building1.bmp");
-   HDC Building2=txLoadImage("Texture/Building2.bmp");
-   HDC Building3=txLoadImage("Texture/Building3.bmp");
-   HDC Building4=txLoadImage("Texture/Building4.bmp");
-   HDC Building5=txLoadImage("Texture/Building5.bmp");
-   HDC Building6=txLoadImage("Texture/Building6.bmp");
-   HDC Building7=txLoadImage("Texture/Building7.bmp");
+       HDC Building;
 
+       HDC Building1=txLoadImage("Texture/Building1.bmp");
+       HDC Building2=txLoadImage("Texture/Building2.bmp");
+       HDC Building3=txLoadImage("Texture/Building3.bmp");
+       HDC Building4=txLoadImage("Texture/Building4.bmp");
+       HDC Building5=txLoadImage("Texture/Building5.bmp");
+       HDC Building6=txLoadImage("Texture/Building6.bmp");
+       HDC Building7=txLoadImage("Texture/Building7.bmp");
 
-   HDC Shop1=txLoadImage("Texture/Shop1.bmp");
-   HDC Shop2=txLoadImage("Texture/Shop2.bmp");
-   HDC Shop3=txLoadImage("Texture/Shop3.bmp");
-   HDC Shop4=txLoadImage("Texture/Shop4.bmp");
 
+       HDC Shop1=txLoadImage("Texture/Shop1.bmp");
+       HDC Shop2=txLoadImage("Texture/Shop2.bmp");
+       HDC Shop3=txLoadImage("Texture/Shop3.bmp");
+       HDC Shop4=txLoadImage("Texture/Shop4.bmp");
+       HDC TC=txLoadImage("Texture/tc.bmp");
 
-   HDC Industry1=txLoadImage("Texture/Industry1.bmp");
-   HDC Industry2=txLoadImage("Texture/Industry2.bmp");
 
+       HDC Industry1=txLoadImage("Texture/Industry1.bmp");
+       HDC Industry2=txLoadImage("Texture/Industry2.bmp");
 
-   HDC Hospital=txLoadImage("Texture/Hospital.bmp");
-   HDC MCHS=txLoadImage("Texture/MCHS.bmp");
-   HDC PoliceStation=txLoadImage("Texture/PoliceStation.bmp");
-   HDC Goverment=txLoadImage("Texture/Goverment.bmp");
 
+       HDC Hospital=txLoadImage("Texture/Hospital.bmp");
+       HDC MCHS=txLoadImage("Texture/MCHS.bmp");
+       HDC PoliceStation=txLoadImage("Texture/PoliceStation.bmp");
+       HDC Goverment=txLoadImage("Texture/Goverment.bmp");
 
-   HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
-   HDC MenuBut=txLoadImage("Texture/MenuBut.bmp");
-   HDC TownName=txLoadImage("Texture/TownName.bmp");
 
-  //картинки конец
+       HDC OMB=txLoadImage("Texture/OpenMenuBut.bmp");
+       HDC MenuBut=txLoadImage("Texture/MenuBut.bmp");
+       HDC TownName=txLoadImage("Texture/TownName.bmp");
 
+  //картинки конец/pictures end
 
-  //кнопки (создание) начало
 
-   //спрайт 1 начало
+  //кнопки (создание) начало/buttons (create) begin
 
-    Button NewGame(30,30,130,70,TX_BLUE);
-    NewGame.textAdd("New Game");
+   //спрайт 1 начало/sprite 1 begin
 
-    Button Saves(30,110,130,70,TX_BLUE);
-    Saves.textAdd("Load Games");
+        Button NewGame(30,30,130,70,TX_BLUE);
+        NewGame.textAdd("New Game");
 
-    Button Information(30,190,130,70,TX_BLUE);
-    Information.textAdd("I");
+        Button Saves(30,110,130,70,TX_BLUE);
+        Saves.textAdd("Load Games");
 
-    Button Settings(30,270,130,70,TX_BLUE);
-    Settings.textAdd("Settings");
+        Button Information(30,190,130,70,TX_BLUE);
+        Information.textAdd("I");
 
-    Button LeaveS1(30,520,130,70,TX_RED);
-    LeaveS1.textAdd("Leave");
+        Button Settings(30,270,130,70,TX_BLUE);
+        Settings.textAdd("Settings");
 
-   //спрайт 1 конец
+        Button LeaveS1(30,520,130,70,TX_RED);
+        LeaveS1.textAdd("Leave");
 
-   //спрайт 2 начало
+   //спрайт 1 конец/sprite 1 end
 
-    //кнопки стоп меню начало
+   //спрайт 2 начало/sprite 2 begin
 
-     Button Continue(260,360,280,70,TX_BLUE);
-     Continue.textAdd("Continue");
+    //кнопки стоп меню начало/buttons stop menu begin
 
-     Button LeaveAndSave(260,440,280,70,TX_BLUE);
-     LeaveAndSave.textAdd("Leave And Save");
+         Button Continue(260,360,280,70,TX_BLUE);
+         Continue.textAdd("Continue");
 
-     Button LeaveS2(260,520,280,70,TX_RED);
-     LeaveS2.textAdd("Leave to Main Menu");
+         Button LeaveAndSave(260,440,280,70,TX_BLUE);
+         LeaveAndSave.textAdd("Leave And Save");
 
-    //кнопки стоп меню конец
+         Button LeaveS2(260,520,280,70,TX_RED);
+         LeaveS2.textAdd("Leave to Main Menu");
 
-    //кнопки строй меню начало
+    //кнопки стоп меню конец/buttons stop menu end
 
-     Button CategoryLive (12,462,29,17,TX_TRANSPARENT);
-     CategoryLive.picterVisible=0;
-     CategoryLive.Facets=0;
 
-     Button CategoryShops (45,462,29,17,TX_TRANSPARENT);
-     CategoryShops.picterVisible=0;
-     CategoryShops.Facets=0;
+    //категории начало/categories begin
 
-     Button CategoryIndustry (77,462,29,17,TX_TRANSPARENT);
-     CategoryIndustry.picterVisible=0;
-     CategoryIndustry.Facets=0;
+         Button CategoryLive (12,462,29,17,TX_TRANSPARENT);
+         CategoryLive.picterVisible=0;
+         CategoryLive.Facets=0;
 
-     Button CategoryMed (109,462,29,17,TX_TRANSPARENT);
-     CategoryMed.picterVisible=0;
-     CategoryMed.Facets=0;
+         Button CategoryShops (45,462,29,17,TX_TRANSPARENT);
+         CategoryShops.picterVisible=0;
+         CategoryShops.Facets=0;
 
-     Button CategoryAntifire (141,462,29,17,TX_TRANSPARENT);
-     CategoryAntifire.picterVisible=0;
-     CategoryAntifire.Facets=0;
+         Button CategoryIndustry (77,462,29,17,TX_TRANSPARENT);
+         CategoryIndustry.picterVisible=0;
+         CategoryIndustry.Facets=0;
 
-     Button CategoryPolice (174,462,29,17,TX_TRANSPARENT);
-     CategoryPolice.picterVisible=0;
-     CategoryPolice.Facets=0;
+         Button CategoryMed (109,462,29,17,TX_TRANSPARENT);
+         CategoryMed.picterVisible=0;
+         CategoryMed.Facets=0;
 
-     Button CategoryGoverment (206,462,29,17,TX_TRANSPARENT);
-     CategoryGoverment.picterVisible=0;
-     CategoryGoverment.Facets=0;
+         Button CategoryAntifire (141,462,29,17,TX_TRANSPARENT);
+         CategoryAntifire.picterVisible=0;
+         CategoryAntifire.Facets=0;
 
-     Button CategoryPark (239,462,29,17,TX_TRANSPARENT);
-     CategoryPark.picterVisible=0;
-     CategoryPark.Facets=0;
+         Button CategoryPolice (174,462,29,17,TX_TRANSPARENT);
+         CategoryPolice.picterVisible=0;
+         CategoryPolice.Facets=0;
 
-     Button CategoryOther (272,462,29,17,TX_TRANSPARENT);
-     CategoryOther.picterVisible=0;
-     CategoryOther.Facets=0;
+         Button CategoryGoverment (206,462,29,17,TX_TRANSPARENT);
+         CategoryGoverment.picterVisible=0;
+         CategoryGoverment.Facets=0;
 
+         Button CategoryPark (239,462,29,17,TX_TRANSPARENT);
+         CategoryPark.picterVisible=0;
+         CategoryPark.Facets=0;
 
+         Button CategoryOther (272,462,29,17,TX_TRANSPARENT);
+         CategoryOther.picterVisible=0;
+         CategoryOther.Facets=0;
 
 
-     Button BD1_1(55,500,50,86,TX_TRANSPARENT);
-     BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
+    //категории конец/categories begin
 
-     Button BD1_2(115,500,50,86,TX_TRANSPARENT);
-     BD1_2.PicterAdd("Texture/Building2.bmp",50,86);
+    //кнопки строй меню начало/button build menu begin
 
-     Button BD1_3(175,500,50,86,TX_TRANSPARENT);
-     BD1_3.PicterAdd("Texture/Building3.bmp",50,86);
 
-     Button BD1_4(235,500,50,86,TX_TRANSPARENT);
-     BD1_4.PicterAdd("Texture/Building4.bmp",50,86);
+         Button BD1_1(55,500,50,86,TX_TRANSPARENT);
+         BD1_1.PicterAdd("Texture/Building1.bmp",50,86);
 
-     Button BD1_5(295,500,50,86,TX_TRANSPARENT);
-     BD1_5.PicterAdd("Texture/Building5.bmp",50,86);
+         Button BD1_2(115,500,50,86,TX_TRANSPARENT);
+         BD1_2.PicterAdd("Texture/Building2.bmp",50,86);
 
-     Button BD1_6(355,500,50,86,TX_TRANSPARENT);
-     BD1_6.PicterAdd("Texture/Building6.bmp",50,86);
+         Button BD1_3(175,500,50,86,TX_TRANSPARENT);
+         BD1_3.PicterAdd("Texture/Building3.bmp",50,86);
 
-     Button BD1_7(415,500,50,27,TX_TRANSPARENT);
-     BD1_7.PicterAdd("Texture/Building7.bmp",50,27);
+         Button BD1_4(235,500,50,86,TX_TRANSPARENT);
+         BD1_4.PicterAdd("Texture/Building4.bmp",50,86);
 
+         Button BD1_5(295,500,50,86,TX_TRANSPARENT);
+         BD1_5.PicterAdd("Texture/Building5.bmp",50,86);
 
+         Button BD1_6(355,500,50,86,TX_TRANSPARENT);
+         BD1_6.PicterAdd("Texture/Building6.bmp",50,86);
 
+         Button BD1_7(415,500,50,27,TX_TRANSPARENT);
+         BD1_7.PicterAdd("Texture/Building7.bmp",50,27);
 
-     Button BD2_1(55,500,79,27,TX_TRANSPARENT);
-     BD2_1.PicterAdd("Texture/Shop1.bmp",79,27);
 
-     Button BD2_2(55,537,79,27,TX_TRANSPARENT);
-     BD2_2.PicterAdd("Texture/Shop2.bmp",79,27);
 
-     Button BD2_3(144,500,79,27,TX_TRANSPARENT);
-     BD2_3.PicterAdd("Texture/Shop3.bmp",79,27);
 
-     Button BD2_4(144,537,79,27,TX_TRANSPARENT);
-     BD2_4.PicterAdd("Texture/Shop4.bmp",79,27);
+         Button BD2_1(55,500,79,27,TX_TRANSPARENT);
+         BD2_1.PicterAdd("Texture/Shop1.bmp",79,27);
 
+         Button BD2_2(55,537,79,27,TX_TRANSPARENT);
+         BD2_2.PicterAdd("Texture/Shop2.bmp",79,27);
 
-     Button BD3_1(10,500,200,82,TX_TRANSPARENT);
-     BD3_1.PicterAdd("Texture/Industry1.bmp",200,82);
+         Button BD2_3(144,500,79,27,TX_TRANSPARENT);
+         BD2_3.PicterAdd("Texture/Shop3.bmp",79,27);
 
-     Button BD3_2(220,500,200,82,TX_TRANSPARENT);
-     BD3_2.PicterAdd("Texture/Industry2.bmp",200,82);
+         Button BD2_4(144,537,79,27,TX_TRANSPARENT);
+         BD2_4.PicterAdd("Texture/Shop4.bmp",79,27);
 
+         Button BD2_5(233,500,200,82,TX_TRANSPARENT);
+         BD2_5.PicterAdd("Texture/tc.bmp",200,82);
 
-     Button BD4_1(10,500,92,86,TX_TRANSPARENT);
-     BD4_1.PicterAdd("Texture/Hospital.bmp",92,86);
 
+         Button BD3_1(10,500,200,82,TX_TRANSPARENT);
+         BD3_1.PicterAdd("Texture/Industry1.bmp",200,82);
 
-     Button BD5_1(10,500,92,55,TX_TRANSPARENT);
-     BD5_1.PicterAdd("Texture/MCHS.bmp",92,55);
+         Button BD3_2(220,500,200,82,TX_TRANSPARENT);
+         BD3_2.PicterAdd("Texture/Industry2.bmp",200,82);
 
 
-     Button BD6_1(10,500,92,86,TX_TRANSPARENT);
-     BD6_1.PicterAdd("Texture/PoliceStation.bmp",92,86);
+         Button BD4_1(10,500,92,86,TX_TRANSPARENT);
+         BD4_1.PicterAdd("Texture/Hospital.bmp",92,86);
 
 
-     Button BD7_1(10,500,100,27,TX_TRANSPARENT);
-     BD7_1.PicterAdd("Texture/Goverment.bmp",100,27);
+         Button BD5_1(10,500,92,55,TX_TRANSPARENT);
+         BD5_1.PicterAdd("Texture/MCHS.bmp",92,55);
 
-    //кнопки строй меню конец
 
-   //спрайт 2 конец
+         Button BD6_1(10,500,92,86,TX_TRANSPARENT);
+         BD6_1.PicterAdd("Texture/PoliceStation.bmp",92,86);
 
-  //кнопки (создание) конец
 
-  //создание переменных начало
+         Button BD7_1(10,500,100,27,TX_TRANSPARENT);
+         BD7_1.PicterAdd("Texture/Goverment.bmp",100,27);
 
-   int sprite=1;//спрайта нет в России (это китайский)
-   int Win2_Visible=0;//течение времени (0-время идет)
-   int Zapret=0;//Запрещает строить на кнопках Строй.меню
-   int PokazMenu=0;//Показывает/убирает меню
-   int CoorPaintBuildingsW=800;
-   int CoorPaintBuildingsH=600;
-   int m=0;
-   int m1=1;
-   int Category=1;
-   int BuildingNumber=1;
-   int BuildingW=50;
-   int BuildingH=86;
-   Building=Building1;
+        //кнопки строй меню конец/buttons build menu end
 
-  //создание переменных конец
+       //спрайт 2 конец/sprite 2 end
 
+      //кнопки (создание) конец/buttons (create) end
 
+      //создание переменных начало/create variable begin
 
+       int sprite=1;//спрайта нет в России (это китайский)/stupid joke
+       int Win2_Visible=0;//течение времени (0-время идет)/the passage of time(0-time's ticking)
+       int Zapret=0;//Запрещает строить на кнопках Строй.меню/prohibits build on buildmenu buttons
+       int PokazMenu=0;//Показывает или убирает меню/Show or remove menu
+       int CoorPaintBuildingsW=800;
+       int CoorPaintBuildingsH=600;
+       int m=0;
+       int m1=1;
+       int Category=1;//устанавливает категорию/select category
+       int BuildingNumber=1;
+       int BuildingW=50;
+       int BuildingH=86;
+       Building=Building1;
 
+      //создание переменных конец
 
 
-  while(1)
-  {
-   //txClear();
-   txBegin();
 
-   if (sprite==1)
-    {//гл меню
-     txSetColor(TX_WHITE);
-     txSelectFont("Arial",40,10);
 
-     txBitBlt(txDC(),0,0,800,600,Menu);
 
-   //кнопки (текст/рисовка) начало
 
-     NewGame.Draw();
-     if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
+      while(1)
+      {
+       txBegin();
 
-     Saves.Draw();
-     if (Saves.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=3;
 
-     Information.Draw();
-     if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
 
-     Settings.Draw();
-     if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry. Function is development.");
 
-     LeaveS1.Draw();
-     if (LeaveS1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
 
-   //кнопки (текст/рисовка) конец
 
-   //Название города начало
+       if (sprite==1)
+        {//гл меню/main menu
+         txSetColor(TX_WHITE);
+         txSelectFont("Arial",40,10);
+
+         txBitBlt(txDC(),0,0,800,600,Menu);
+
+
+
+       //кнопки (текст/рисовка) начало/buttons (text/draw) begin
+
+         NewGame.Draw();
+         if (NewGame.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=2;
+
+         Saves.Draw();
+         if (Saves.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=3;
+
+         Information.Draw();
+         if (Information.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=4;
+
+         Settings.Draw();
+         if (Settings.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry. Function is development.");
+
+         LeaveS1.Draw();
+         if (LeaveS1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=6;
+
+       //кнопки (текст/рисовка) конец/buttons (text/draw) end
+
+
+
+   //Название игры начало/name game begin
+
     txSetColor(TX_GREEN);
     txSelectFont("Arial",60,30);
     txTextOut(220,480,"Curved Skylines");
-   //Название города конец
 
-   //Версия игры начало
+   //Название игры конец/name game end
+
+
+
+   //Версия игры начало/version of game begin
+
     txSetColor(TX_GREEN);
     txSelectFont("Arial",10,10);
     txTextOut(700,590,"v Beta 1.0");
-   //Версия игры конец
+
+   //Версия игры конец/version of game end
 
 
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    if (sprite==2)
-    {//игра
+    {//игра/game
       txBitBlt(txDC(),0,0,800,600,Field);
-      //txTransparentBlt(txDC(),0,0,800,600,Load,0,0,TX_BLACK);
       txTransparentBlt (700,0,Sun,TX_WHITE);
       txTransparentBlt (0,0,OMB,TX_WHITE);
 
-     if (Win2_Visible)// если время остановленно
+
+
+
+
+     if (Win2_Visible)// если время остановленно/if time is stoping
       {
-        txTransparentBlt(txDC(),0,0,800,600,Buildings,0,0,TX_BLACK);
+            txTransparentBlt(txDC(),0,0,800,600,Buildings,0,0,TX_BLACK);
 
-        txSetColor(TX_BLUE);
-        txSelectFont("Arial",40,10);
+            txSetColor(TX_BLUE);
+            txSelectFont("Arial",40,10);
 
-        txDrawText (310,300,500,330,"Curved Skylines");
+            txDrawText (310,300,500,330,"Curved Skylines");
 
-        txSetColor(TX_WHITE);
-      //кнопки (текст/рисовка) начало
-       Continue.Draw();
-       if (Continue.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
+            txSetColor(TX_WHITE);
+          //кнопки (текст/рисовка) начало/buttons (text/draw) begin
+           Continue.Draw();
+           if (Continue.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Win2_Visible=0;
 
-       LeaveAndSave.Draw();
-       if (LeaveAndSave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) txMessageBox("Sorry. Function is development.");
+           LeaveAndSave.Draw();
+           if (LeaveAndSave.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+            {
+                 SaveFile(Buildings);
+            }
 
-       LeaveS2.Draw();
-       if (LeaveS2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=1;
-      //кнопки (текст/рисовка) конец
 
-       if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
-       txSleep(65);
+
+
+
+
+
+
+           LeaveS2.Draw();
+           if (LeaveS2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) sprite=1;
+          //кнопки (текст/рисовка) конец/buttons (text/draw) end
+
+           if (GetAsyncKeyState(VK_ESCAPE)) Win2_Visible=0;
+           txSleep(65);
      }
 
-     if (!Win2_Visible)//если время не остановленно
+
+
+
+
+
+
+     if (!Win2_Visible)//если время не остановленно/if time isn't stoping
      {
 
 
-      if (GetAsyncKeyState('M')) { m=1; m1=1;};
+          if (GetAsyncKeyState('M')) { m=1; m1=1;};
 
 
-      if (txMouseButtons()==1)
-      {
-       if (txMouseY()<1.2*txMouseX()+50&&txMouseY()>1.2*txMouseX()-470&&txMouseY()>-0.1*txMouseX()+50&&txMouseY()<-0.1*txMouseX()+500&&Zapret==0)
-         {
-         // cout<<2*txMouseX()+81<<"  "<<txMouseY()  <<std::endl;
-         // ТУТ ЗАДА РАЗМЕРЫ 50 86 ЧЕРЕЗ ПЕРЕМЕННЫЕ
-
-          txTransparentBlt(Buildings,txMouseX(),txMouseY(),BuildingW,BuildingH,Building,0,0,TX_WHITE);
-         }
-      }
+          if (txMouseButtons()==1)
+          {
+           if (txMouseY()<1.2*txMouseX()+50&&txMouseY()>1.2*txMouseX()-470&&txMouseY()>-0.1*txMouseX()+50&&txMouseY()<-0.1*txMouseX()+500&&Zapret==0)
+             {
+              txTransparentBlt(Buildings,txMouseX(),txMouseY(),BuildingW,BuildingH,Building,0,0,TX_WHITE);
+             }
+          }
 
 
-       Zapret=0;
+           Zapret=0;
 
 
-      if (txMouseButtons()==1||m)
 
-      {
-       if(PokazMenu==0)
-        {
-         CoorPaintBuildingsW=800;
-         CoorPaintBuildingsH=600;
 
-        if ((txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50 )|| m)
-         {
-         txTransparentBlt(BuildMenu,0,450,800,150,MenuBut,0,0,TX_WHITE);
-         Zapret=1;
-         m1=0;
-         PokazMenu=1;
 
-         txSleep(100);
 
-         }
+          if (txMouseButtons()==1||m)
+
+          {
+
+           if(PokazMenu==0)
+            {
+             CoorPaintBuildingsW=800;
+             CoorPaintBuildingsH=600;
+
+
+            if ((txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50 )|| m)
+             {
+             txTransparentBlt(BuildMenu,0,450,800,150,MenuBut,0,0,TX_WHITE);
+             Zapret=1;
+             m1=0;
+             PokazMenu=1;
+
+             txSleep(100);
+
+             }
        }
 
 
@@ -350,261 +451,290 @@
 
         if(PokazMenu==1)
         {
-        txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
-        CoorPaintBuildingsH=450;
+            txTransparentBlt(txDC(),0,0,800,600,BuildMenu,0,0,TX_BLACK);
+            CoorPaintBuildingsH=450;
 
 
-            if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50||(m&&m1))
-                     {
+                if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>0&&txMouseX()<50&&txMouseY()<50||(m&&m1))
+                         {
 
-                     PokazMenu=0;
-                     m=0;
-                     txSleep(100);
-                     }
+                         PokazMenu=0;
+                         m=0;
+                         txSleep(100);
+                         }
 
 
-        CategoryLive.Draw();
-        if (CategoryLive.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=1;
 
-        CategoryShops.Draw();
-        if (CategoryShops.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=2;
 
-        CategoryIndustry.Draw();
-        if (CategoryIndustry.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=3;
 
-        CategoryMed.Draw();
-        if (CategoryMed.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=4;
 
-        CategoryAntifire.Draw();
-        if (CategoryAntifire.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=5;
 
-        CategoryPolice.Draw();
-        if (CategoryPolice.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=6;
+            CategoryLive.Draw();
+            if (CategoryLive.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=1;
 
-        CategoryGoverment.Draw();
-        if (CategoryGoverment.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=7;
+            CategoryShops.Draw();
+            if (CategoryShops.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=2;
 
-        CategoryPark.Draw();
-        if (CategoryPark.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=8;
+            CategoryIndustry.Draw();
+            if (CategoryIndustry.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=3;
 
-        CategoryOther.Draw();
-        if (CategoryOther.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=9;
+            CategoryMed.Draw();
+            if (CategoryMed.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=4;
 
+            CategoryAntifire.Draw();
+            if (CategoryAntifire.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=5;
 
+            CategoryPolice.Draw();
+            if (CategoryPolice.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=6;
 
+            CategoryGoverment.Draw();
+            if (CategoryGoverment.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=7;
 
+            CategoryPark.Draw();
+            if (CategoryPark.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=8;
 
+            CategoryOther.Draw();
+            if (CategoryOther.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1) Category=9;
 
-        switch (Category)
-          { case 1:
 
-            BD1_1.Draw();
 
-            BD1_2.Draw();
 
-            BD1_3.Draw();
 
-            BD1_4.Draw();
 
-            BD1_5.Draw();
 
-            BD1_6.Draw();
 
-            BD1_7.Draw();
 
-            if (BD1_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building1;
-                break;}
 
-            if (BD1_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building2;
-                break;}
+            switch (Category)
+              { case 1:
 
-            if (BD1_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building3;
-                break;}
+                BD1_1.Draw();
 
-            if (BD1_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building4;
-                break;}
+                BD1_2.Draw();
 
-            if (BD1_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building5;
-                break;}
+                BD1_3.Draw();
 
-            if (BD1_6.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=86;
-                Building=Building6;
-                break;}
+                BD1_4.Draw();
 
-            if (BD1_7.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=50;
-                BuildingH=27;
-                Building=Building7;
-                break;}
+                BD1_5.Draw();
 
+                BD1_6.Draw();
 
-            break;
+                BD1_7.Draw();
 
-            case 2:
 
-            BD2_1.Draw();
 
-            BD2_2.Draw();
+                if (BD1_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building1;
+                    break;}
 
-            BD2_3.Draw();
+                if (BD1_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building2;
+                    break;}
 
-            BD2_4.Draw();
+                if (BD1_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building3;
+                    break;}
 
+                if (BD1_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building4;
+                    break;}
 
-            if (BD2_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=79;
-                BuildingH=27;
-                Building=Shop1;
-                break;}
+                if (BD1_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building5;
+                    break;}
 
-            if (BD2_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=79;
-                BuildingH=27;
-                Building=Shop2;
-                break;}
+                if (BD1_6.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=86;
+                    Building=Building6;
+                    break;}
 
-            if (BD2_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=79;
-                BuildingH=27;
-                Building=Shop3;
-                break;}
+                if (BD1_7.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=50;
+                    BuildingH=27;
+                    Building=Building7;
+                    break;}
 
-            if (BD2_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=79;
-                BuildingH=27;
-                Building=Shop4;
-                break;}
 
-            break;
+                break;
 
-            case 3:
 
-            BD3_1.Draw();
+                case 2:
 
-            BD3_2.Draw();
+                BD2_1.Draw();
 
+                BD2_2.Draw();
 
+                BD2_3.Draw();
 
+                BD2_4.Draw();
 
-            if (BD3_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=200;
-                BuildingH=82;
-                Building=Industry1;
-                break;}
+                BD2_5.Draw();
 
-            if (BD3_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=200;
-                BuildingH=82;
-                Building=Industry2;
-                break;}
 
 
 
-            break;
+                if (BD2_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=79;
+                    BuildingH=27;
+                    Building=Shop1;
+                    break;}
 
+                if (BD2_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=79;
+                    BuildingH=27;
+                    Building=Shop2;
+                    break;}
 
-           case 4:
+                if (BD2_3.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=79;
+                    BuildingH=27;
+                    Building=Shop3;
+                    break;}
 
-            BD4_1.Draw();
+                if (BD2_4.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=79;
+                    BuildingH=27;
+                    Building=Shop4;
+                    break;}
 
+                if (BD2_5.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=200;
+                    BuildingH=82;
+                    Building=TC;
+                    break;}
 
+                break;
 
 
-            if (BD4_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=92;
-                BuildingH=86;
-                Building=Hospital;
-                break;}
+                case 3:
 
+                BD3_1.Draw();
 
-            break;
+                BD3_2.Draw();
 
-            case 5:
 
-            BD5_1.Draw();
 
 
+                if (BD3_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=200;
+                    BuildingH=82;
+                    Building=Industry1;
+                    break;}
 
+                if (BD3_2.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=200;
+                    BuildingH=82;
+                    Building=Industry2;
+                    break;}
 
-            if (BD5_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=92;
-                BuildingH=55;
-                Building=MCHS;
-                break;}
 
 
-            break;
+                break;
 
-            case 6:
 
-            BD6_1.Draw();
 
+               case 4:
 
+                BD4_1.Draw();
 
 
-            if (BD6_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=92;
-                BuildingH=86;
-                Building=PoliceStation;
-                break;}
 
 
-            break;
+                if (BD4_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=92;
+                    BuildingH=86;
+                    Building=Hospital;
+                    break;}
 
-            case 7:
 
-            BD7_1.Draw();
+                break;
 
 
 
+                case 5:
 
-            if (BD7_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
-            {   BuildingW=100;
-                BuildingH=27;
-                Building=Goverment;
-                break;}
+                BD5_1.Draw();
 
 
-            break;
-           }
 
 
+                if (BD5_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=92;
+                    BuildingH=55;
+                    Building=MCHS;
+                    break;}
 
 
+                break;
 
 
 
 
+                case 6:
 
+                BD6_1.Draw();
 
 
+                if (BD6_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=92;
+                    BuildingH=86;
+                    Building=PoliceStation;
+                    break;}
 
 
+                break;
 
 
 
+                case 7:
 
+                BD7_1.Draw();
 
 
-         if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>450&&txMouseX()<800&&txMouseX()<600)
-          Zapret=1;
+
+
+                if (BD7_1.BClick(txMouseX(),txMouseY())&&txMouseButtons()==1)
+                {   BuildingW=100;
+                    BuildingH=27;
+                    Building=Goverment;
+                    break;}
+
+
+                break;
+               }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             if (txMouseButtons()==1&&txMouseX()>0&&txMouseY()>450&&txMouseX()<800&&txMouseX()<600)
+              Zapret=1;
 
 
 
@@ -614,7 +744,11 @@
 
 
     }
+
+
+
     txTransparentBlt(txDC(),0,0,CoorPaintBuildingsW,CoorPaintBuildingsH,Buildings,0,0,TX_BLACK);
+
 
     if (txMouseButtons()==2)
        {
@@ -632,6 +766,19 @@
    }
 
    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   if (sprite==3)
   {
@@ -656,19 +803,32 @@
   if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
   }
 
+
+
+
+
+
+
   if (sprite==4)
-   {//сведения
+   {//сведения/information
      txBitBlt(txDC(),0,0,800,600,InformationMenu);
 
 
      if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
    }
 
+
+
+
+
+
  if (sprite==6)
-  {//выход
+  {//выход/leave
    txSetFillColor(TX_WHITE);
 
+
    txBitBlt(txDC(),0,50,800,600,Nya);
+
 
    if (GetAsyncKeyState(VK_ESCAPE)) sprite=1;
 
@@ -676,6 +836,11 @@
 
   }
 
+
+
+
+
+
   txEnd();
   }
- }//счастливый конец
+ }//счастливый конец/happy end <3
